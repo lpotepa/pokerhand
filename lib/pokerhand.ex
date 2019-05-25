@@ -60,7 +60,7 @@ defmodule Pokerhand do
   end
 
   @doc """
-  Creates a hand from
+  Creates a hand from a string
 
   ## Examples
       iex> Pokerhand.create_hand("Black: 2H 3D 5S 9C KD")                                      
