@@ -55,7 +55,7 @@ defmodule Functions do
   """
 
   def pair(hand) do
-    counts(hand) |> Enum.filter(fn {k, v} -> v == 2 end)
+    counts(hand) |> Enum.filter(fn {_, v} -> v == 2 end)
   end
 
   @doc """
@@ -95,7 +95,7 @@ defmodule Functions do
   """
 
   def three_of_a_kind(hand) do
-    counts(hand) |> Enum.filter(fn {k, v} -> v == 3 end)
+    counts(hand) |> Enum.filter(fn {_, v} -> v == 3 end)
   end
 
   @doc """
@@ -129,7 +129,7 @@ defmodule Functions do
   """
 
   def flush?(hand) do
-    suits(hand) |> Enum.filter(fn {k, v} -> v == 5 end) |> length == 1
+    suits(hand) |> Enum.filter(fn {_, v} -> v == 5 end) |> length == 1
   end
 
   @doc """
@@ -143,8 +143,8 @@ defmodule Functions do
   """
 
   def full_house?(hand) do
-    counts(hand) |> Enum.filter(fn {k, v} -> v == 3 end) |> length == 1 &&
-      counts(hand) |> Enum.filter(fn {k, v} -> v == 2 end) |> length == 1
+    counts(hand) |> Enum.filter(fn {_, v} -> v == 3 end) |> length == 1 &&
+      counts(hand) |> Enum.filter(fn {_, v} -> v == 2 end) |> length == 1
   end
 
   @doc """
@@ -156,8 +156,8 @@ defmodule Functions do
   """
 
   def full_house(hand) do
-    (counts(hand) |> Enum.filter(fn {k, v} -> v == 3 end)) ++
-      (counts(hand) |> Enum.filter(fn {k, v} -> v == 2 end))
+    (counts(hand) |> Enum.filter(fn {_, v} -> v == 3 end)) ++
+      (counts(hand) |> Enum.filter(fn {_, v} -> v == 2 end))
   end
 
   @doc """
@@ -183,7 +183,7 @@ defmodule Functions do
   """
 
   def four_of_a_kind(hand) do
-    counts(hand) |> Enum.filter(fn {k, v} -> v == 4 end)
+    counts(hand) |> Enum.filter(fn {_, v} -> v == 4 end)
   end
 
   @doc """

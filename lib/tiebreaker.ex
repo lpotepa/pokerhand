@@ -68,8 +68,8 @@ defmodule Tiebreaker do
   end
 
   def break("two pairs", hand1, hand2) do
-    [{hand1_value_1, _}, {hand1_value_2, _}] = pair(hand1)
-    [{hand2_value_1, _}, {hand2_value_2, _}] = pair(hand2)
+    [{hand1_value_1, _}, {_, _}] = pair(hand1)
+    [{hand2_value_1, _}, {_, _}] = pair(hand2)
     hand1_value = Enum.max([hand1_value_1, hand1_value_1])
     hand2_value = Enum.max([hand2_value_1, hand2_value_1])
 
@@ -185,7 +185,7 @@ defmodule Tiebreaker do
   defp find_3_cards(hand) do
     full_house(hand)
     |> Enum.find(fn el ->
-      {value, length} = el
+      {_, length} = el
       length == 3
     end)
   end
@@ -193,7 +193,7 @@ defmodule Tiebreaker do
   defp find_4_cards(hand) do
     four_of_a_kind(hand)
     |> Enum.find(fn el ->
-      {value, length} = el
+      {_, length} = el
       length == 4
     end)
   end
